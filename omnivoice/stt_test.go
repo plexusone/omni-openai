@@ -4,9 +4,10 @@ import (
 	"os"
 	"testing"
 
-	"github.com/plexusone/omnivoice-openai/omnivoice"
 	"github.com/plexusone/omnivoice-core/stt"
 	"github.com/plexusone/omnivoice-core/stt/providertest"
+
+	"github.com/plexusone/omnivoice-openai/omnivoice"
 )
 
 func TestSTTConformance(t *testing.T) {

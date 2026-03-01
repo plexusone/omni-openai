@@ -122,7 +122,7 @@ func (c *Client) Transcribe(ctx context.Context, req TranscriptionRequest) (*Tra
 	// Build the request parameters
 	params := openai.AudioTranscriptionNewParams{
 		File:  bytes.NewReader(req.Audio),
-		Model: openai.AudioModel(req.Model),
+		Model: req.Model,
 	}
 
 	if req.Language != "" {
@@ -226,7 +226,7 @@ func (c *Client) Synthesize(ctx context.Context, req TTSRequest) (*TTSResponse, 
 
 	params := openai.AudioSpeechNewParams{
 		Input: req.Input,
-		Model: openai.SpeechModel(req.Model),
+		Model: req.Model,
 		Voice: openai.AudioSpeechNewParamsVoice(req.Voice),
 	}
 
@@ -273,7 +273,7 @@ func (c *Client) SynthesizeStream(ctx context.Context, req TTSRequest) (io.ReadC
 
 	params := openai.AudioSpeechNewParams{
 		Input: req.Input,
-		Model: openai.SpeechModel(req.Model),
+		Model: req.Model,
 		Voice: openai.AudioSpeechNewParamsVoice(req.Voice),
 	}
 

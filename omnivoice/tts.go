@@ -5,8 +5,9 @@ import (
 	"context"
 	"io"
 
-	oaiclient "github.com/plexusone/omnivoice-openai"
 	"github.com/plexusone/omnivoice-core/tts"
+
+	oaiclient "github.com/plexusone/omnivoice-openai"
 )
 
 // OpenAI TTS voices with their metadata.

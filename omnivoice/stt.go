@@ -7,8 +7,9 @@ import (
 	"path/filepath"
 	"time"
 
-	oaiclient "github.com/plexusone/omnivoice-openai"
 	"github.com/plexusone/omnivoice-core/stt"
+
+	oaiclient "github.com/plexusone/omnivoice-openai"
 )
 
 // ErrURLTranscriptionNotSupported is returned when URL transcription is not supported.

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://github.com/grokify/structured-changelog/raw/v0.7/schema/changelog.schema.json",
+  "irVersion": "1.0",
+  "project": "omnivoice-openai",
+  "repository": "https://github.com/plexusone/omnivoice-openai",
+  "versioning": "semver",
+  "commitConvention": "conventional",
+  "maintainers": [
+    "grokify",
+    "johncwang@gmail.com"
+  ],
+  "releases": [
+    {
+      "version": "v0.1.0",
+      "date": "2026-02-28",
+      "highlights": [
+        {
+          "description": "Initial release of omnivoice-openai"
+        }
+      ],
+      "added": [
+        {
+          "description": "OpenAI client with `Transcribe`, `TranscribeFile`, `Synthesize`, `SynthesizeStream` methods",
+          "commit": "ee8c5f8"
+        },
+        {
+          "description": "OmniVoice STT provider implementing `stt.Provider` interface",
+          "commit": "ee8c5f8"
+        },
+        {
+          "description": "OmniVoice TTS provider implementing `tts.Provider` interface",
+          "commit": "ee8c5f8"
+        },
+        {
+          "description": "Unit tests for STT and TTS providers",
+          "commit": "ee8c5f8"
+        }
+      ],
+      "build": [
+        {
+          "description": "Add CI workflows, gitignore, and license",
+          "commit": "0daca2d"
+        }
+      ]
+    }
+  ]
+}

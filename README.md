@@ -1,8 +1,12 @@
-# omnivoice-openai
+# OmniVoice OpenAI Provider
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/plexusone/omnivoice-openai.svg)](https://pkg.go.dev/github.com/plexusone/omnivoice-openai)
-[![CI](https://github.com/plexusone/omnivoice-openai/actions/workflows/ci.yaml/badge.svg)](https://github.com/plexusone/omnivoice-openai/actions/workflows/ci.yaml)
-[![Lint](https://github.com/plexusone/omnivoice-openai/actions/workflows/lint.yaml/badge.svg)](https://github.com/plexusone/omnivoice-openai/actions/workflows/lint.yaml)
+[![Go CI][go-ci-svg]][go-ci-url]
+[![Go Lint][go-lint-svg]][go-lint-url]
+[![Go SAST][go-sast-svg]][go-sast-url]
+[![Go Report Card][goreport-svg]][goreport-url]
+[![Docs][docs-godoc-svg]][docs-godoc-url]
+[![Visualization][viz-svg]][viz-url]
+[![License][license-svg]][license-url]
 
 OpenAI audio provider for the [OmniVoice](https://github.com/plexusone/omnivoice-core) voice pipeline framework.
 
@@ -119,3 +123,20 @@ client := openai.NewClient("your-api-key")
 ## License
 
 MIT License - see [LICENSE](LICENSE) for details.
+
+ [go-ci-svg]: https://github.com/plexusone/omnivoice-openai/actions/workflows/go-ci.yaml/badge.svg?branch=main
+ [go-ci-url]: https://github.com/plexusone/omnivoice-openai/actions/workflows/go-ci.yaml
+ [go-lint-svg]: https://github.com/plexusone/omnivoice-openai/actions/workflows/go-lint.yaml/badge.svg?branch=main
+ [go-lint-url]: https://github.com/plexusone/omnivoice-openai/actions/workflows/go-lint.yaml
+ [go-sast-svg]: https://github.com/plexusone/omnivoice-openai/actions/workflows/go-sast-codeql.yaml/badge.svg?branch=main
+ [go-sast-url]: https://github.com/plexusone/omnivoice-openai/actions/workflows/go-sast-codeql.yaml
+ [goreport-svg]: https://goreportcard.com/badge/github.com/plexusone/omnivoice-openai
+ [goreport-url]: https://goreportcard.com/report/github.com/plexusone/omnivoice-openai
+ [docs-godoc-svg]: https://pkg.go.dev/badge/github.com/plexusone/omnivoice-openai
+ [docs-godoc-url]: https://pkg.go.dev/github.com/plexusone/omnivoice-openai
+ [viz-svg]: https://img.shields.io/badge/visualizaton-Go-blue.svg
+ [viz-url]: https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=grokify%2Fcoreforge
+ [loc-svg]: https://tokei.rs/b1/github/plexusone/omnivoice-openai
+ [repo-url]: https://github.com/plexusone/omnivoice-openai
+ [license-svg]: https://img.shields.io/badge/license-MIT-blue.svg
+ [license-url]: https://github.com/plexusone/omnivoice-openai/blob/master/LICENSE

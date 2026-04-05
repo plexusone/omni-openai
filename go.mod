@@ -4,7 +4,7 @@ go 1.24.11
 
 require (
 	github.com/openai/openai-go v1.12.0
-	github.com/plexusone/omnivoice-core v0.7.0
+	github.com/plexusone/omnivoice-core v0.8.0
 )
 
 require (

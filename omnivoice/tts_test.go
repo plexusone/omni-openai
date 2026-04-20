@@ -6,7 +6,7 @@ import (
 
 	"github.com/plexusone/omnivoice-core/tts/providertest"
 
-	"github.com/plexusone/omnivoice-openai/omnivoice"
+	"github.com/plexusone/omni-openai/omnivoice"
 )
 
 func TestTTSConformance(t *testing.T) {

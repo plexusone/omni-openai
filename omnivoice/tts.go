@@ -7,7 +7,7 @@ import (
 
 	"github.com/plexusone/omnivoice-core/tts"
 
-	oaiclient "github.com/plexusone/omnivoice-openai"
+	oaiclient "github.com/plexusone/omni-openai"
 )
 
 // OpenAI TTS voices with their metadata.

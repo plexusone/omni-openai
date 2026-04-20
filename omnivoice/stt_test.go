@@ -7,7 +7,7 @@ import (
 	"github.com/plexusone/omnivoice-core/stt"
 	"github.com/plexusone/omnivoice-core/stt/providertest"
 
-	"github.com/plexusone/omnivoice-openai/omnivoice"
+	"github.com/plexusone/omni-openai/omnivoice"
 )
 
 func TestSTTConformance(t *testing.T) {

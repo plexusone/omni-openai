@@ -1,0 +1,59 @@
+site_name: Omni-OpenAI
+site_description: OpenAI provider adapters for the omni-* ecosystem
+site_url: https://plexusone.github.io/omni-openai
+repo_name: plexusone/omni-openai
+repo_url: https://github.com/plexusone/omni-openai
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: deep purple
+      accent: purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+    - content.tabs.link
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Providers:
+    - OmniLLM: providers/omnillm.md
+    - OmniVoice: providers/omnivoice.md
+  - API Reference:
+    - Client: api/client.md
+    - OmniLLM: api/omnillm.md
+    - OmniVoice: api/omnivoice.md
+  - Releases:
+    - v0.2.0: releases/v0.2.0.md
+    - v0.1.0: releases/v0.1.0.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/plexusone/omni-openai

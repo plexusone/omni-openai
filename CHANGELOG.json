@@ -38,6 +38,9 @@
         },
         {
           "description": "MkDocs documentation site with getting started guide, provider docs, and API reference"
+        },
+        {
+          "description": "Conformance tests using `providertest` framework for OmniLLM provider"
         }
       ]
     },

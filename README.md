@@ -32,9 +32,9 @@ OpenAI provider adapters for the omni-* ecosystem, wrapping the official [openai
 
 ## Features
 
-- **OmniLLM**: Chat completions provider with streaming, tool calling, and vision support
-- **OmniVoice STT**: Whisper transcription with word and segment timestamps
-- **OmniVoice TTS**: OpenAI audio synthesis with multiple voices
+- 💬 **OmniLLM**: Chat completions provider with streaming, tool calling, and vision support
+- 🎙️ **OmniVoice STT**: Whisper transcription with word and segment timestamps
+- 🔊 **OmniVoice TTS**: OpenAI audio synthesis with multiple voices
 
 ## Installation
 

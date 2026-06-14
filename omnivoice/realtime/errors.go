@@ -4,6 +4,9 @@ import "errors"
 
 // Common errors.
 var (
+	// ErrNoAPIKey is returned when API key is not provided.
+	ErrNoAPIKey = errors.New("API key is required")
+
 	// ErrSessionClosed is returned when operating on a closed session.
 	ErrSessionClosed = errors.New("session closed")
 

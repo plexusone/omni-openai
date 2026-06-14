@@ -711,6 +711,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#gateway-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gateway Integration
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -819,6 +828,19 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nx">realtime</span><span class="p">.</span><span class="nx">WithTools</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="w">   </span><span class="c1">// Function calling</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nx">realtime</span><span class="p">.</span><span class="nx">WithTemperature</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span>
 </code></pre></div>
+<h3 id="gateway-integration">Gateway Integration<a class="headerlink" href="#gateway-integration" title="Permanent link">&para;</a></h3>
+<p>Implements <code>realtime.Provider</code> interface from omnivoice-core for seamless gateway integration:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="s">&quot;github.com/plexusone/omnivoice-core/gateway&quot;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nx">openaiRealtime</span><span class="w"> </span><span class="s">&quot;github.com/plexusone/omni-openai/omnivoice/realtime&quot;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1">// Use with RealtimeBridge</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nx">bridge</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gateway</span><span class="p">.</span><span class="nx">NewRealtimeBridgeForTwilio</span><span class="p">(</span><span class="nx">provider</span><span class="p">,</span><span class="w"> </span><span class="nx">corereal</span><span class="p">.</span><span class="nx">ProcessConfig</span><span class="p">{</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nx">Instructions</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;You are a helpful assistant.&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nx">Voice</span><span class="p">:</span><span class="w">        </span><span class="s">&quot;alloy&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">})</span>
+</code></pre></div>
 <h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -834,12 +856,12 @@
 </tr>
 <tr>
 <td>github.com/plexusone/omnivoice-core</td>
-<td>v0.9.0 → v0.11.0</td>
+<td>v0.9.0 → v0.12.1</td>
 </tr>
 </tbody>
 </table>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>go<span class="w"> </span>get<span class="w"> </span>github.com/plexusone/omni-openai@v0.3.0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>go<span class="w"> </span>get<span class="w"> </span>github.com/plexusone/omni-openai@v0.3.0
 </code></pre></div>
 <p>See the <a href="../../providers/realtime/">Realtime API Guide</a> for detailed usage.</p>
 <h2 id="full-changelog">Full Changelog<a class="headerlink" href="#full-changelog" title="Permanent link">&para;</a></h2>

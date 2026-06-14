@@ -49,6 +49,7 @@ nav:
   - Providers:
     - OmniLLM: providers/omnillm.md
     - OmniVoice: providers/omnivoice.md
+    - OmniVoice Realtime: providers/realtime.md
   - API Reference:
     - Client: api/client.md
     - OmniLLM: api/omnillm.md

@@ -35,6 +35,7 @@ OpenAI provider adapters for the omni-* ecosystem, wrapping the official [openai
 - 💬 **OmniLLM**: Chat completions provider with streaming, tool calling, and vision support
 - 🎙️ **OmniVoice STT**: Whisper transcription with word and segment timestamps
 - 🔊 **OmniVoice TTS**: OpenAI audio synthesis with multiple voices
+- 🎤 **OmniVoice Realtime**: Native voice-to-voice via OpenAI Realtime API (~100ms latency)
 
 ## Installation
 
@@ -147,6 +148,56 @@ func main() {
 }
 ```
 
+### OmniVoice Realtime Provider
+
+Native voice-to-voice with ~100ms latency via WebSocket:
+
+```go
+package main
+
+import (
+    "context"
+    "log"
+
+    "github.com/plexusone/omni-openai/omnivoice/realtime"
+)
+
+func main() {
+    ctx := context.Background()
+
+    // Create realtime provider
+    provider := realtime.NewProvider(os.Getenv("OPENAI_API_KEY"),
+        realtime.WithVoice("alloy"),
+        realtime.WithInstructions("You are a helpful assistant."),
+    )
+
+    // Stream audio in/out
+    audioIn := make(chan []byte, 100)
+    audioCh, transcriptCh, err := provider.ProcessAudioStream(ctx, audioIn, realtime.ProcessConfig{})
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    // Send audio (PCM16 24kHz mono)
+    go func() {
+        for chunk := range microphoneAudio {
+            audioIn <- chunk
+        }
+        close(audioIn)
+    }()
+
+    // Receive audio and transcripts
+    for {
+        select {
+        case audio := <-audioCh:
+            playAudio(audio.Audio) // PCM16 24kHz mono
+        case transcript := <-transcriptCh:
+            log.Printf("Transcript: %s", transcript.Text)
+        }
+    }
+}
+```
+
 ### Direct OpenAI Client Usage
 
 ```go
@@ -223,8 +274,13 @@ omni-openai/
 ├── omnillm/            # OmniLLM provider adapter
 │   └── adapter.go
 └── omnivoice/          # OmniVoice provider adapters
-    ├── stt.go
-    └── tts.go
+    ├── stt.go          # Whisper STT
+    ├── tts.go          # OpenAI TTS
+    └── realtime/       # OpenAI Realtime API (voice-to-voice)
+        ├── client.go   # WebSocket client
+        ├── events.go   # Client/server event types
+        ├── provider.go # RealtimeProvider interface
+        └── options.go  # Configuration
 ```
 
 ## License

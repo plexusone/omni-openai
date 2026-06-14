@@ -8,6 +8,8 @@ github.com/openai/openai-go v1.12.0 h1:NBQCnXzqOTv5wsgNC36PrFEiskGfO5wccfCWDo9S1
 github.com/openai/openai-go v1.12.0/go.mod h1:g461MYGXEXBVdV5SaR/5tNzNbSfwTBBefwc+LlDCK0Y=
 github.com/plexusone/omnillm-core v0.16.0 h1:ClEEAaAl/jgn0nV65azRAulEkLoMtCZqnWQBJCBH5eU=
 github.com/plexusone/omnillm-core v0.16.0/go.mod h1:0KzNniPwHXVtfRgfyD3fAlaj8RDktQwRrxEFQrXbLtE=
+github.com/plexusone/omnivoice-core v0.12.1 h1:CWTNC4uVK9TKsiXhSa0u315FwGWhb0dEIi9KJ2C9lU4=
+github.com/plexusone/omnivoice-core v0.12.1/go.mod h1:ghbU63vSkn09vz1Mb9uQrePVcNLpXXBB9IMZ2wkzePM=
 github.com/tidwall/gjson v1.14.2/go.mod h1:/wbyibRr2FHMks5tjHJ5F8dMZh3AcwJEMf5vlfC0lxk=
 github.com/tidwall/gjson v1.19.0 h1:xwxm7n691Uf3u5OFjzngavjGTh55KX5q/9w9xHW88JU=
 github.com/tidwall/gjson v1.19.0/go.mod h1:V37/opeE/JbLUOfH0QTXiNez2l0RUjYUhpT4szFQAfc=

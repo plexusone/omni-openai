@@ -6,7 +6,7 @@ require (
 	github.com/gorilla/websocket v1.5.3
 	github.com/openai/openai-go v1.12.0
 	github.com/plexusone/omnillm-core v0.16.0
-	github.com/plexusone/omnivoice-core v0.11.0
+	github.com/plexusone/omnivoice-core v0.12.1
 )
 
 require (
@@ -19,6 +19,3 @@ require (
 	golang.org/x/exp v0.0.0-20260611194520-c48552f49976 // indirect
 	golang.org/x/text v0.38.0 // indirect
 )
-
-// TODO: Remove before release - use local omnivoice-core for realtime package
-replace github.com/plexusone/omnivoice-core => /Users/johnwang/go/src/github.com/plexusone/omnivoice-core

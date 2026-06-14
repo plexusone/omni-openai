@@ -11,6 +11,32 @@
   ],
   "releases": [
     {
+      "version": "v0.3.0",
+      "date": "2026-06-14",
+      "highlights": [
+        { "description": "Added OpenAI Realtime API for native voice-to-voice with ~100ms latency" }
+      ],
+      "added": [
+        { "description": "OpenAI Realtime API WebSocket client for GPT-4o-realtime", "commit": "ab30422" },
+        { "description": "RealtimeProvider with ProcessAudioStream for voice-to-voice processing", "commit": "ab30422" },
+        { "description": "All client/server event types per OpenAI Realtime API specification", "commit": "ab30422" },
+        { "description": "Configuration options: voice, instructions, VAD, tools, temperature", "commit": "ab30422" },
+        { "description": "Function calling support with OnFunctionCall callback", "commit": "ab30422" },
+        { "description": "PCM16 24kHz mono audio format (native for LiveKit integration)", "commit": "ab30422" }
+      ],
+      "documentation": [
+        { "description": "Realtime API provider guide with quick start and integration examples", "commit": "857f926" },
+        { "description": "README updated with OmniVoice Realtime usage example", "commit": "3ef7933" }
+      ],
+      "tests": [
+        { "description": "Unit tests for client configuration, event parsing, and provider", "commit": "69c4c60" }
+      ],
+      "dependencies": [
+        { "description": "Add github.com/gorilla/websocket v1.5.3", "commit": "b971260" },
+        { "description": "Update github.com/plexusone/omnivoice-core v0.9.0 → v0.11.0", "commit": "b971260" }
+      ]
+    },
+    {
       "version": "v0.2.0",
       "date": "2026-04-19",
       "highlights": [

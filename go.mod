@@ -19,3 +19,6 @@ require (
 	golang.org/x/exp v0.0.0-20260611194520-c48552f49976 // indirect
 	golang.org/x/text v0.38.0 // indirect
 )
+
+// TODO: Remove before release - use local omnivoice-core for realtime package
+replace github.com/plexusone/omnivoice-core => /Users/johnwang/go/src/github.com/plexusone/omnivoice-core

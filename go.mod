@@ -9,6 +9,8 @@ require (
 	github.com/plexusone/omnivoice-core v0.13.0
 )
 
+replace github.com/plexusone/omnivoice-core => ../omnivoice-core
+
 require (
 	github.com/grokify/mogo v0.74.6 // indirect
 	github.com/grokify/sogo v0.15.0 // indirect

@@ -29,6 +29,29 @@ func NewRealtimeProvider(cfg registry.ProviderConfig) (registry.RealtimeProvider
 		opts = append(opts, WithInstructions(v))
 	}
 
+	// Type-safe extensions (provider-specific options)
+	if v, ok := cfg.Extensions["tools"].([]Tool); ok {
+		opts = append(opts, WithTools(v...))
+	}
+	if v, ok := cfg.Extensions["turnDetection"].(*TurnDetectionConfig); ok {
+		opts = append(opts, WithTurnDetection(v))
+	}
+	if v := getExtString(cfg.Extensions, "inputAudioFormat"); v != "" {
+		opts = append(opts, WithInputAudioFormat(v))
+	}
+	if v := getExtString(cfg.Extensions, "outputAudioFormat"); v != "" {
+		opts = append(opts, WithOutputAudioFormat(v))
+	}
+	if v, ok := cfg.Extensions["modalities"].([]string); ok {
+		opts = append(opts, WithModalities(v...))
+	}
+	if v, ok := cfg.Extensions["temperature"].(float64); ok {
+		opts = append(opts, WithTemperature(v))
+	}
+	if v, ok := cfg.Extensions["maxResponseOutputTokens"].(int); ok {
+		opts = append(opts, WithMaxTokens(v))
+	}
+
 	provider := NewProvider(cfg.APIKey, opts...)
 	return &realtimeWrapper{provider}, nil
 }

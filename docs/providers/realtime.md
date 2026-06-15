@@ -70,6 +70,65 @@ func main() {
 }
 ```
 
+## Registry Integration
+
+*Added in v0.4.0*
+
+Use the omnivoice-core registry for automatic provider discovery:
+
+```go
+import (
+    omnivoice "github.com/plexusone/omnivoice-core"
+    "github.com/plexusone/omnivoice-core/registry"
+    _ "github.com/plexusone/omni-openai/omnivoice/realtime" // Auto-register
+)
+
+// Get realtime provider via registry
+provider, err := omnivoice.GetRealtimeProvider("openai",
+    registry.WithAPIKey(os.Getenv("OPENAI_API_KEY")),
+    registry.WithModel("gpt-4o-realtime-preview-2024-12-17"),
+    registry.WithVoice("alloy"),
+    registry.WithInstructions("You are a helpful assistant."),
+)
+if err != nil {
+    log.Fatal(err)
+}
+
+// Process audio streams
+audioCh, transcriptCh, err := provider.ProcessAudioStream(ctx, audioIn, nil)
+```
+
+### Type-Safe Registry Options
+
+Provider-specific options for OpenAI Realtime configuration:
+
+```go
+import "github.com/plexusone/omni-openai/omnivoice/realtime"
+
+provider, err := omnivoice.GetRealtimeProvider("openai",
+    registry.WithAPIKey(os.Getenv("OPENAI_API_KEY")),
+    // Type-safe OpenAI-specific options
+    realtime.WithRegistryTools(tools),
+    realtime.WithRegistryTurnDetection(turnDetectionConfig),
+    realtime.WithRegistryInputAudioFormat("pcm16"),
+    realtime.WithRegistryOutputAudioFormat("pcm16"),
+    realtime.WithRegistryModalities([]string{"text", "audio"}),
+    realtime.WithRegistryTemperature(0.8),
+    realtime.WithRegistryMaxResponseOutputTokens(4096),
+)
+```
+
+### Accessing Underlying Provider
+
+Access the underlying OpenAI provider for full API access:
+
+```go
+wrapper := provider.(*realtime.RealtimeWrapper)
+openaiProvider := wrapper.Provider()
+
+// Use OpenAI-specific methods
+```
+
 ## Configuration
 
 ### Provider Options

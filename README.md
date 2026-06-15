@@ -198,6 +198,31 @@ func main() {
 }
 ```
 
+### Registry Integration
+
+Use omnivoice-core registry for automatic provider discovery:
+
+```go
+import (
+    omnivoice "github.com/plexusone/omnivoice-core"
+    "github.com/plexusone/omnivoice-core/registry"
+    _ "github.com/plexusone/omni-openai/omnivoice/realtime" // Auto-register
+)
+
+// Get realtime provider via registry
+provider, err := omnivoice.GetRealtimeProvider("openai",
+    registry.WithAPIKey(os.Getenv("OPENAI_API_KEY")),
+    registry.WithVoice("alloy"),
+    registry.WithInstructions("You are a helpful assistant."),
+)
+if err != nil {
+    log.Fatal(err)
+}
+
+// Process audio streams
+audioCh, transcriptCh, err := provider.ProcessAudioStream(ctx, audioIn, nil)
+```
+
 ### Direct OpenAI Client Usage
 
 ```go

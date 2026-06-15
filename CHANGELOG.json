@@ -11,6 +11,25 @@
   ],
   "releases": [
     {
+      "version": "v0.4.0",
+      "date": "2026-06-15",
+      "highlights": [
+        { "description": "Registry integration with omnivoice-core for automatic OpenAI Realtime provider discovery" },
+        { "description": "Type-safe registry options for provider-specific configuration" }
+      ],
+      "added": [
+        { "description": "[realtime] Registry integration with omnivoice-core via side-effect imports", "commit": "0fdc85d" },
+        { "description": "[realtime] Type-safe registry options (`WithRegistryTools`, `WithRegistryTurnDetection`, `WithRegistryModalities`)", "commit": "8f1a6f8" },
+        { "description": "[realtime] Registry options for audio format (`WithRegistryInputAudioFormat`, `WithRegistryOutputAudioFormat`)", "commit": "8f1a6f8" },
+        { "description": "[realtime] Registry options for generation parameters (`WithRegistryTemperature`, `WithRegistryMaxResponseOutputTokens`)", "commit": "8f1a6f8" },
+        { "description": "[realtime] Enhanced factory with typed extension handling", "commit": "e036319" },
+        { "description": "[realtime] `Provider()` method on wrapper for accessing underlying OpenAI realtime provider", "commit": "e036319" }
+      ],
+      "dependencies": [
+        { "description": "`github.com/plexusone/omnivoice-core` v0.12.1 → v0.14.0", "commit": "9bdbed6" }
+      ]
+    },
+    {
       "version": "v0.3.0",
       "date": "2026-06-14",
       "highlights": [

@@ -6,10 +6,8 @@ require (
 	github.com/gorilla/websocket v1.5.3
 	github.com/openai/openai-go v1.12.0
 	github.com/plexusone/omnillm-core v0.16.0
-	github.com/plexusone/omnivoice-core v0.13.0
+	github.com/plexusone/omnivoice-core v0.14.0
 )
-
-replace github.com/plexusone/omnivoice-core => ../omnivoice-core
 
 require (
 	github.com/grokify/mogo v0.74.6 // indirect

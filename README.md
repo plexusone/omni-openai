@@ -29,7 +29,7 @@ OpenAI provider adapters for the omni-* ecosystem, wrapping the official [openai
 
 ## Features
 
-- 💬 **OmniLLM**: Chat completions provider with streaming, tool calling, and vision support
+- 💬 **OmniLLM**: Chat completions provider with streaming, tool calling, vision, and reasoning support
 - 🎙️ **OmniVoice STT**: Whisper transcription with word and segment timestamps
 - 🔊 **OmniVoice TTS**: OpenAI audio synthesis with multiple voices
 - 🎤 **OmniVoice Realtime**: Native voice-to-voice via OpenAI Realtime API (~100ms latency)
@@ -80,6 +80,23 @@ func main() {
     log.Printf("Response: %s", resp.Choices[0].Message.Content)
 }
 ```
+
+### Reasoning Models
+
+Control reasoning depth for o1, o3, and other reasoning-capable models:
+
+```go
+effort := core.ReasoningEffortHigh
+resp, err := provider.CreateChatCompletion(ctx, &core.ChatCompletionRequest{
+    Model:           "o3-mini",
+    ReasoningEffort: &effort,
+    Messages: []core.Message{
+        {Role: core.RoleUser, Content: "Prove that sqrt(2) is irrational"},
+    },
+})
+```
+
+Supported values: `ReasoningEffortNone`, `ReasoningEffortLow`, `ReasoningEffortMedium`, `ReasoningEffortHigh`.
 
 ### OmniVoice STT Provider
 

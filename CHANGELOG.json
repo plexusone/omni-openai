@@ -11,6 +11,22 @@
   ],
   "releases": [
     {
+      "version": "v0.5.0",
+      "date": "2026-07-05",
+      "highlights": [
+        { "description": "**Reasoning Effort Support**: Control reasoning depth for o1, o3, and other reasoning-capable models" }
+      ],
+      "added": [
+        { "description": "[omnillm] `ReasoningEffort` field support for controlling model reasoning depth", "commit": "3b5c15f" }
+      ],
+      "tests": [
+        { "description": "[omnillm] Unit and integration tests for reasoning_effort parameter", "commit": "28b15ce" }
+      ],
+      "dependencies": [
+        { "description": "`github.com/plexusone/omnillm-core` v0.17.0 → v0.18.0", "commit": "fda8a63" }
+      ]
+    },
+    {
       "version": "v0.4.0",
       "date": "2026-06-15",
       "highlights": [

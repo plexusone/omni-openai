@@ -161,6 +161,11 @@ func (p *Provider) buildParams(req *core.ChatCompletionRequest) openai.ChatCompl
 		}
 	}
 
+	// Reasoning effort (for o1, o3, and other reasoning models)
+	if req.ReasoningEffort != nil {
+		params.ReasoningEffort = shared.ReasoningEffort(*req.ReasoningEffort)
+	}
+
 	// Response format
 	if req.ResponseFormat != nil && req.ResponseFormat.Type == "json_object" {
 		params.ResponseFormat = openai.ChatCompletionNewParamsResponseFormatUnion{

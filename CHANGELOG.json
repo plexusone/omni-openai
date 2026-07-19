@@ -11,6 +11,23 @@
   ],
   "releases": [
     {
+      "version": "v0.6.0",
+      "date": "2026-07-19",
+      "highlights": [
+        { "description": "**OmniDevX Codex CLI Collector**: new `omnidevx` package collecting developer-experience telemetry from Codex CLI local stores for the OmniDevX domain", "commit": "edfb264" }
+      ],
+      "added": [
+        { "description": "[omnidevx] Codex CLI collector: session metadata from the SQLite threads index (model, reasoning effort, git branch/origin, session tokens; content columns never selected) and per-session events from rollout JSONL (prompts, tool calls with name attribution, patch applies, task durations, per-turn token usage)", "commit": "edfb264" },
+        { "description": "[omnidevx] Graceful degradation: missing state database or schema drift falls back to rollout-only collection with diagnostics", "commit": "edfb264" }
+      ],
+      "tests": [
+        { "description": "[omnidevx] Collector tests on fabricated rollout fixtures and in-test SQLite databases: session dedup, per-turn usage, tool attribution, schema-drift fallback, newest-database selection, and privacy assertions", "commit": "df8b0ff" }
+      ],
+      "dependencies": [
+        { "description": "Add github.com/plexusone/omnidevx-core v0.1.0 and modernc.org/sqlite v1.54.0", "commit": "edfb264" }
+      ]
+    },
+    {
       "version": "v0.5.0",
       "date": "2026-07-05",
       "highlights": [

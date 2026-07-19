@@ -1,0 +1,12 @@
+{"timestamp":"2026-07-01T10:00:00.000Z","type":"session_meta","payload":{"id":"thread01","timestamp":"2026-07-01T10:00:00.000Z","cwd":"/Users/testuser/src/example","cli_version":"0.9.0","source":"cli","model_provider":"openai","git":{"branch":"main","commit_hash":"abc123","repository_url":"https://github.com/example/project.git"}}}
+{"timestamp":"2026-07-01T10:00:05.000Z","type":"event_msg","payload":{"type":"user_message","message":"please fix the bug"}}
+{"timestamp":"2026-07-01T10:00:06.000Z","type":"event_msg","payload":{"type":"task_started","turn_id":"turn-1","model_context_window":272000}}
+{"timestamp":"2026-07-01T10:00:08.000Z","type":"response_item","payload":{"type":"function_call","name":"exec_command","arguments":"{\"cmd\":\"go test\"}","call_id":"call-1"}}
+{"timestamp":"2026-07-01T10:00:09.000Z","type":"response_item","payload":{"type":"function_call_output","call_id":"call-1","output":"ok"}}
+{"timestamp":"2026-07-01T10:00:10.000Z","type":"response_item","payload":{"type":"custom_tool_call","name":"apply_patch","input":"...","call_id":"call-2","status":"completed"}}
+{"timestamp":"2026-07-01T10:00:11.000Z","type":"response_item","payload":{"type":"custom_tool_call_output","call_id":"call-2","output":"done"}}
+{"timestamp":"2026-07-01T10:00:11.500Z","type":"event_msg","payload":{"type":"patch_apply_end","call_id":"call-2","turn_id":"turn-1","success":true,"stdout":"","stderr":"","changes":{}}}
+{"timestamp":"2026-07-01T10:00:12.000Z","type":"event_msg","payload":{"type":"token_count","info":{"total_token_usage":{"input_tokens":5000,"cached_input_tokens":4000,"output_tokens":300,"reasoning_output_tokens":100,"total_tokens":5300},"last_token_usage":{"input_tokens":1000,"cached_input_tokens":800,"output_tokens":150,"reasoning_output_tokens":50,"total_tokens":1150},"model_context_window":272000}}}
+{"timestamp":"2026-07-01T10:00:13.000Z","type":"event_msg","payload":{"type":"agent_message","message":"Fixed the bug."}}
+{"timestamp":"2026-07-01T10:00:14.000Z","type":"event_msg","payload":{"type":"task_complete","turn_id":"turn-1","completed_at":"2026-07-01T10:00:14.000Z","duration_ms":8000,"time_to_first_token_ms":1200,"last_agent_message":"Fixed the bug."}}
+not json at all

@@ -33,6 +33,7 @@ OpenAI provider adapters for the omni-* ecosystem, wrapping the official [openai
 - 🎙️ **OmniVoice STT**: Whisper transcription with word and segment timestamps
 - 🔊 **OmniVoice TTS**: OpenAI audio synthesis with multiple voices
 - 🎤 **OmniVoice Realtime**: Native voice-to-voice via OpenAI Realtime API (~100ms latency)
+- 📊 **OmniDevX**: Codex CLI telemetry collector (session history, token usage, AI-attribution events) for the [OmniDevX](https://github.com/plexusone/omnidevx-core) domain
 
 ## Installation
 

@@ -8,6 +8,9 @@ PlexusOne developer-telemetry ecosystem behind SPACE/AI SPACE analytics.
 It lives in this repository (rather than `omnidevx-core/providers`)
 because reading Codex's state database requires a SQLite driver
 (`modernc.org/sqlite`) — too heavy a dependency for the core module.
+This mirrors the provider split used across the Omni ecosystem: lightweight,
+stdlib-only collectors can live in `omnidevx-core`, while vendor-specific
+collectors with heavier dependencies stay in the vendor repository.
 
 ## What it reads
 
@@ -21,9 +24,26 @@ Codex CLI persists history in two internal formats, both collected:
   per-session event streams: prompts, tool calls, patch applies, task
   durations, per-turn token usage.
 
-Both are internal Codex formats: parsing is defensive, a missing database
-or schema drift degrades to rollout-only collection with diagnostics, and
-all events carry history-mode provenance.
+Both are internal Codex formats: parsing is defensive and all events carry
+history-mode provenance.
+
+## Format stability
+
+Codex's local files are not a stable public API. The collector treats the
+SQLite index as an optimization for richer session metadata, not as the only
+source of truth:
+
+- If `~/.codex/state_N.sqlite` is missing, collection continues from rollout
+  JSONL files.
+- If the SQLite schema changes or expected columns disappear, collection emits
+  a diagnostic and falls back to rollout-only collection.
+- If rollout record types change, unknown records are skipped; recognized
+  metadata-only records still become OmniDevX events.
+
+When Codex changes local paths or schemas, update this provider in
+`omni-openai/omnidevx` rather than moving SQLite support into
+`omnidevx-core`. The core module should remain dependency-light and continue
+to receive normalized events through the `omnidevx-core.Collector` interface.
 
 ## Usage
 

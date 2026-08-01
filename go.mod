@@ -1,13 +1,13 @@
 module github.com/plexusone/omni-openai
 
-go 1.26.0
+go 1.26.4
 
 require (
 	github.com/gorilla/websocket v1.5.3
 	github.com/openai/openai-go v1.12.0
 	github.com/plexusone/omnidevx-core v0.3.0
 	github.com/plexusone/omnillm-core v0.18.0
-	github.com/plexusone/omnivoice-core v0.15.0
+	github.com/plexusone/omnivoice-core v0.16.0
 	modernc.org/sqlite v1.55.0
 )
 

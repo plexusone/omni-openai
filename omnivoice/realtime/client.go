@@ -16,6 +16,11 @@ import (
 const (
 	// RealtimeAPIEndpoint is the WebSocket endpoint for the Realtime API.
 	RealtimeAPIEndpoint = "wss://api.openai.com/v1/realtime"
+
+	// maxMessageSize is the maximum size of a WebSocket message from the server.
+	// This bounds memory usage for SDP negotiation, audio chunks, and other events.
+	// Set to 16MB to accommodate large audio chunks while preventing OOM.
+	maxMessageSize = 16 * 1024 * 1024
 )
 
 // Client is the OpenAI Realtime API client.
@@ -68,6 +73,9 @@ func (c *Client) Connect(ctx context.Context) (*Session, error) {
 		}
 		return nil, fmt.Errorf("websocket dial failed: %w", err)
 	}
+
+	// Bound incoming message size to prevent OOM from malicious or buggy servers
+	conn.SetReadLimit(maxMessageSize)
 
 	session := &Session{
 		conn:     conn,

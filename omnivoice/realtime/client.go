@@ -282,13 +282,14 @@ func (s *Session) readLoop() {
 			closed := s.closed
 			s.closeMu.Unlock()
 			if !closed {
-				// Send error event
+				// Send error event, waiting for the consumer rather than
+				// silently dropping the terminal error.
 				errEvent := &ErrorEvent{}
 				errEvent.Type = TypeError
 				errEvent.Error.Message = err.Error()
 				select {
 				case s.eventsCh <- errEvent:
-				default:
+				case <-s.closeCh:
 				}
 			}
 			return
@@ -299,12 +300,14 @@ func (s *Session) readLoop() {
 			continue // Skip unparseable events
 		}
 
+		// Block until the consumer accepts the event or the session closes.
+		// Events (audio deltas, transcripts, function calls) must never be
+		// silently dropped: a full channel pauses the WebSocket read instead,
+		// applying backpressure while preserving order and completeness.
 		select {
 		case s.eventsCh <- event:
 		case <-s.closeCh:
 			return
-		default:
-			// Drop event if channel is full
 		}
 	}
 }

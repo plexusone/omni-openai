@@ -2,66 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://plexusone.github.io/omni-openai/</loc>
-         <lastmod>2026-07-19</lastmod>
+         <lastmod>2026-08-09</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omni-openai/getting-started/</loc>
-         <lastmod>2026-07-19</lastmod>
+         <lastmod>2026-08-09</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omni-openai/api/client/</loc>
-         <lastmod>2026-07-19</lastmod>
+         <lastmod>2026-08-09</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omni-openai/api/omnillm/</loc>
-         <lastmod>2026-07-19</lastmod>
+         <lastmod>2026-08-09</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omni-openai/api/omnivoice/</loc>
-         <lastmod>2026-07-19</lastmod>
+         <lastmod>2026-08-09</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omni-openai/providers/omnidevx/</loc>
-         <lastmod>2026-07-19</lastmod>
+         <lastmod>2026-08-09</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omni-openai/providers/omnillm/</loc>
-         <lastmod>2026-07-19</lastmod>
+         <lastmod>2026-08-09</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omni-openai/providers/omnivoice/</loc>
-         <lastmod>2026-07-19</lastmod>
+         <lastmod>2026-08-09</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omni-openai/providers/realtime/</loc>
-         <lastmod>2026-07-19</lastmod>
+         <lastmod>2026-08-09</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omni-openai/releases/</loc>
-         <lastmod>2026-07-19</lastmod>
+         <lastmod>2026-08-09</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omni-openai/releases/v0.1.0/</loc>
-         <lastmod>2026-07-19</lastmod>
+         <lastmod>2026-08-09</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omni-openai/releases/v0.2.0/</loc>
-         <lastmod>2026-07-19</lastmod>
+         <lastmod>2026-08-09</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omni-openai/releases/v0.3.0/</loc>
-         <lastmod>2026-07-19</lastmod>
+         <lastmod>2026-08-09</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omni-openai/releases/v0.4.0/</loc>
-         <lastmod>2026-07-19</lastmod>
+         <lastmod>2026-08-09</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omni-openai/releases/v0.5.0/</loc>
-         <lastmod>2026-07-19</lastmod>
+         <lastmod>2026-08-09</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omni-openai/releases/v0.6.0/</loc>
-         <lastmod>2026-07-19</lastmod>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://plexusone.github.io/omni-openai/releases/v0.6.1/</loc>
+         <lastmod>2026-08-09</lastmod>
     </url>
 </urlset>

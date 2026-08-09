@@ -531,6 +531,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#format-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Format stability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -802,6 +813,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../releases/v0.6.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.6.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../releases/v0.6.0/" class="md-nav__link">
         
   
@@ -1008,6 +1047,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#format-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Format stability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1056,7 +1106,10 @@
 PlexusOne developer-telemetry ecosystem behind SPACE/AI SPACE analytics.</p>
 <p>It lives in this repository (rather than <code>omnidevx-core/providers</code>)
 because reading Codex's state database requires a SQLite driver
-(<code>modernc.org/sqlite</code>) — too heavy a dependency for the core module.</p>
+(<code>modernc.org/sqlite</code>) — too heavy a dependency for the core module.
+This mirrors the provider split used across the Omni ecosystem: lightweight,
+stdlib-only collectors can live in <code>omnidevx-core</code>, while vendor-specific
+collectors with heavier dependencies stay in the vendor repository.</p>
 <h2 id="what-it-reads">What it reads<a class="headerlink" href="#what-it-reads" title="Permanent link">&para;</a></h2>
 <p>Codex CLI persists history in two internal formats, both collected:</p>
 <ul>
@@ -1068,9 +1121,24 @@ because reading Codex's state database requires a SQLite driver
   per-session event streams: prompts, tool calls, patch applies, task
   durations, per-turn token usage.</li>
 </ul>
-<p>Both are internal Codex formats: parsing is defensive, a missing database
-or schema drift degrades to rollout-only collection with diagnostics, and
-all events carry history-mode provenance.</p>
+<p>Both are internal Codex formats: parsing is defensive and all events carry
+history-mode provenance.</p>
+<h2 id="format-stability">Format stability<a class="headerlink" href="#format-stability" title="Permanent link">&para;</a></h2>
+<p>Codex's local files are not a stable public API. The collector treats the
+SQLite index as an optimization for richer session metadata, not as the only
+source of truth:</p>
+<ul>
+<li>If <code>~/.codex/state_N.sqlite</code> is missing, collection continues from rollout
+  JSONL files.</li>
+<li>If the SQLite schema changes or expected columns disappear, collection emits
+  a diagnostic and falls back to rollout-only collection.</li>
+<li>If rollout record types change, unknown records are skipped; recognized
+  metadata-only records still become OmniDevX events.</li>
+</ul>
+<p>When Codex changes local paths or schemas, update this provider in
+<code>omni-openai/omnidevx</code> rather than moving SQLite support into
+<code>omnidevx-core</code>. The core module should remain dependency-light and continue
+to receive normalized events through the <code>omnidevx-core.Collector</code> interface.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nx">codex</span><span class="w"> </span><span class="s">&quot;github.com/plexusone/omni-openai/omnidevx&quot;</span>

@@ -14,7 +14,7 @@ require (
 require (
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/google/uuid v1.6.0 // indirect
-	github.com/grokify/mogo v0.74.6 // indirect
+	github.com/grokify/mogo v0.74.7 // indirect
 	github.com/grokify/sogo v0.15.0 // indirect
 	github.com/mattn/go-isatty v0.0.24 // indirect
 	github.com/ncruces/go-strftime v1.0.0 // indirect

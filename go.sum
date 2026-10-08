@@ -18,8 +18,8 @@ github.com/ncruces/go-strftime v1.0.0 h1:HMFp8mLCTPp341M/ZnA4qaf7ZlsbTc+miZjCLOF
 github.com/ncruces/go-strftime v1.0.0/go.mod h1:Fwc5htZGVVkseilnfgOVb9mKy6w1naJmn9CehxcKcls=
 github.com/openai/openai-go v1.12.0 h1:NBQCnXzqOTv5wsgNC36PrFEiskGfO5wccfCWDo9S1U0=
 github.com/openai/openai-go v1.12.0/go.mod h1:g461MYGXEXBVdV5SaR/5tNzNbSfwTBBefwc+LlDCK0Y=
-github.com/plexusone/omnidevx-core v0.3.0 h1:uKSJAjs74fzod5iM3W3opG53eNX1v4J0WHK4mC2QL/0=
-github.com/plexusone/omnidevx-core v0.3.0/go.mod h1:ryBtws1QCxC6eWAtNddW4doPzVDOz9tBZsoA0gC1w/A=
+github.com/plexusone/omnidevx-core v0.4.0 h1:qRHZCGKMILETPzSOcPT8mZiePs6QtThss3tXWHW5PLU=
+github.com/plexusone/omnidevx-core v0.4.0/go.mod h1:gi1WOQMtjL8igrkBj+vWWmYyRdXurg3DXYCZJw2NEj8=
 github.com/plexusone/omnillm-core v0.18.0 h1:JnONiIe08W+83hsyxyFHSouk0jkBY2o7/SzvJxF3mYI=
 github.com/plexusone/omnillm-core v0.18.0/go.mod h1:180U/oa67fly3+T3h1sL/pBMvcjIKR+bvSEkAGnalMY=
 github.com/plexusone/omnivoice-core v0.16.0 h1:vLpIuuhSFhznO62TOCgD/6hZ401D636Sfqs8GTLGcBo=

@@ -27,6 +27,44 @@ Codex CLI persists history in two internal formats, both collected:
 Both are internal Codex formats: parsing is defensive and all events carry
 history-mode provenance.
 
+## Session reader
+
+`SessionReader` implements `sessions.Reader` from
+[`omnidevx-core`](https://github.com/plexusone/omnidevx-core) so Codex
+sessions can be listed and resumed alongside Claude Code sessions. Unlike the
+collector, it reads titles and prompt text so that a person can recognize a
+session. That content stays in memory: it is never turned into an event or
+written to the event store, and `NoContent` suppresses it.
+
+```go
+reader, err := codex.NewSessionReader(codex.Config{})
+if err != nil {
+    return err
+}
+cat := sessions.NewCatalog(reader)
+list, diagnostics, err := cat.List(ctx, sessions.ListOptions{})
+```
+
+What it reports for each session:
+
+- **Identity and place.** The thread ID, working directory, branch, and
+  origin URL from the newest `~/.codex/state_N.sqlite`.
+- **Title.** The name or title Codex recorded, else the first prompt, else
+  the directory name.
+- **Recent prompts.** The last few prompts a person typed, read from the end
+  of the rollout file with a bounded read that grows only while no typed
+  prompt has been found.
+- **Running state.** Codex keeps no per-process liveness file, so a session
+  is `running` only when a `codex` process names its thread ID on the command
+  line, as `codex resume <id>` does. A session started fresh and still open is
+  reported as `unknown`, not guessed. Where `ps` is unavailable, including
+  Windows, every session is `unknown`.
+- **Resume.** `codex resume <id>` from the session's working directory.
+
+The reader tolerates schema drift in the same way as the collector: columns
+that a Codex version lacks degrade to empty, and only `id`, `cwd`, and the
+timestamps are required.
+
 ## Format stability
 
 Codex's local files are not a stable public API. The collector treats the

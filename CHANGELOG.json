@@ -21,7 +21,8 @@
       ],
       "dependencies": [
         { "description": "Bumped `github.com/plexusone/omnidevx-core` from v0.3.0 to v0.4.0", "commit": "8a0cfc2" },
-        { "description": "Bumped `modernc.org/sqlite` from 1.56.0 to 1.60.1", "commit": "8960be6" }
+        { "description": "Bumped `modernc.org/sqlite` from 1.56.0 to 1.60.1", "commit": "8960be6" },
+        { "description": "Updated indirect dependencies, including `github.com/grokify/mogo` to v0.75.0, `golang.org/x/text` to v0.42.0, and `github.com/tidwall/gjson` to v1.20.0", "commit": "fe9e066" }
       ]
     },
     {

@@ -11,6 +11,15 @@
   ],
   "releases": [
     {
+      "version": "v0.7.1",
+      "date": "2026-10-08",
+      "dependencies": [
+        { "description": "Bumped `github.com/plexusone/omnidevx-core` from v0.4.0 to v0.4.1", "commit": "d427409" },
+        { "description": "Bumped `github.com/plexusone/omnillm-core` from v0.18.0 to v0.18.1 and `github.com/plexusone/omnivoice-core` from v0.16.0 to v0.16.1", "commit": "d427409" },
+        { "description": "Updated indirect dependencies", "commit": "5448958" }
+      ]
+    },
+    {
       "version": "v0.7.0",
       "date": "2026-10-07",
       "highlights": [

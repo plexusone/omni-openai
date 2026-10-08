@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://plexusone.github.io/omni-openai/releases/v0.6.1/">
+        <link rel="canonical" href="https://plexusone.github.io/omni-openai/releases/v0.7.0/">
       
       
-        <link rel="prev" href="../v0.7.0/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../v0.6.0/">
+        <link rel="next" href="../v0.6.1/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>v0.6.1 - Omni-OpenAI</title>
+        <title>v0.7.0 - Omni-OpenAI</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#release-notes-v061" class="md-skip">
+        <a href="#release-notes-v070" class="md-skip">
           Skip to content
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              v0.6.1
+              v0.7.0
             
           </span>
         </div>
@@ -719,34 +719,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../v0.7.0/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    v0.7.0
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -766,7 +738,7 @@
   <span class="md-ellipsis">
     
   
-    v0.6.1
+    v0.7.0
   
 
     
@@ -784,7 +756,7 @@
   <span class="md-ellipsis">
     
   
-    v0.6.1
+    v0.7.0
   
 
     
@@ -821,10 +793,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fixed" class="md-nav__link">
+  <a href="#added" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fixed
+        Added
       
     </span>
   </a>
@@ -832,10 +804,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tests" class="md-nav__link">
+  <a href="#notes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tests
+        Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies
       
     </span>
   </a>
@@ -853,10 +836,49 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v0.6.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.6.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1075,10 +1097,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fixed" class="md-nav__link">
+  <a href="#added" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fixed
+        Added
       
     </span>
   </a>
@@ -1086,10 +1108,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tests" class="md-nav__link">
+  <a href="#notes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tests
+        Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies
       
     </span>
   </a>
@@ -1101,6 +1134,17 @@
     <span class="md-ellipsis">
       
         Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation
       
     </span>
   </a>
@@ -1127,31 +1171,45 @@
   
 
 
-<h1 id="release-notes-v061">Release Notes: v0.6.1<a class="headerlink" href="#release-notes-v061" title="Permanent link">&para;</a></h1>
-<p><strong>Release Date:</strong> 2026-08-09</p>
+<h1 id="release-notes-v070">Release Notes: v0.7.0<a class="headerlink" href="#release-notes-v070" title="Permanent link">&para;</a></h1>
+<p><strong>Release Date:</strong> 2026-10-07</p>
 <h2 id="highlights">Highlights<a class="headerlink" href="#highlights" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Realtime reliability fixes</strong>: WebSocket events are no longer silently
-  dropped under consumer backpressure, and message size is bounded to
-  prevent OOM from malicious or buggy servers</li>
+<li><strong>Codex CLI session reader</strong>: <code>omnidevx.SessionReader</code> lists Codex
+  sessions for the OmniDevX session catalog, with a title, the recent
+  prompts a person typed, the working directory, branch, and the command to
+  resume the session</li>
 </ul>
-<h2 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h2>
+<h2 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>realtime.Session.readLoop</code> blocked on a full events channel instead of
-  dropping server events (audio deltas, transcripts, function calls) when
-  the consumer fell behind — a slow consumer now applies backpressure to
-  the WebSocket read instead of losing data</li>
-<li>WebSocket message size is now bounded via <code>SetReadLimit(16MB)</code>, closing
-  an unbounded memory allocation path from malicious or buggy servers</li>
+<li><code>omnidevx.SessionReader</code> implements <code>sessions.Reader</code> from
+  <code>omnidevx-core</code> v0.4.0. It reads the newest <code>state_N.sqlite</code> for session
+  metadata and the end of the rollout file for recent typed prompts, and
+  tolerates Codex versions that lack optional columns</li>
+<li>A session is reported as <code>running</code> only when a <code>codex</code> process names its
+  thread ID on the command line (<code>codex resume &lt;id&gt;</code>). A session started
+  fresh and still open is <code>unknown</code>, not guessed</li>
 </ul>
-<h2 id="tests">Tests<a class="headerlink" href="#tests" title="Permanent link">&para;</a></h2>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Regression test verifying <code>readLoop</code> blocks and delivers all events in
-  order under a slow consumer</li>
+<li>The reader reads titles and prompt text so that a person can recognize a
+  session. That content stays in memory and is never turned into an event;
+  the metadata-only collector is unchanged.</li>
+<li>Where <code>ps</code> is unavailable, including Windows, no session is reported as
+  running.</li>
+</ul>
+<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>github.com/plexusone/omnidevx-core</code> from v0.3.0 to v0.4.0</li>
+<li><code>modernc.org/sqlite</code> from 1.56.0 to 1.60.1</li>
 </ul>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>go<span class="w"> </span>get<span class="w"> </span>github.com/plexusone/omni-openai@v0.6.1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>go<span class="w"> </span>get<span class="w"> </span>github.com/plexusone/omni-openai@v0.7.0
 </code></pre></div>
+<h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../providers/omnidevx/#session-reader">OmniDevX provider guide</a></li>
+</ul>
 
 
 

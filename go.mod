@@ -6,8 +6,8 @@ require (
 	github.com/gorilla/websocket v1.5.3
 	github.com/openai/openai-go v1.12.0
 	github.com/plexusone/omnidevx-core v0.4.0
-	github.com/plexusone/omnillm-core v0.18.0
-	github.com/plexusone/omnivoice-core v0.16.0
+	github.com/plexusone/omnillm-core v0.18.1
+	github.com/plexusone/omnivoice-core v0.16.1
 	modernc.org/sqlite v1.60.1
 )
 

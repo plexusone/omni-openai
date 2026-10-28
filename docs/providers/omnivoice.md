@@ -15,7 +15,8 @@ The OmniVoice providers implement the `stt.Provider` and `tts.Provider` interfac
 ### TTS (Text-to-Speech)
 
 - 13 distinct voices
-- Multiple output formats (mp3, opus, aac, flac, wav, pcm)
+- Multiple output formats (mp3, opus, aac, flac, wav, pcm), plus mu-law and
+  A-law for phone calls
 - Adjustable speed (0.25x to 4.0x)
 - Streaming output
 - HD quality model option
@@ -166,4 +167,22 @@ result, err := provider.Synthesize(ctx, "Hello!", tts.SynthesisConfig{
 | aac | Apple ecosystem |
 | flac | Lossless |
 | wav | Uncompressed PCM |
-| pcm | Raw PCM (24kHz, 16-bit, mono) |
+| pcm | Raw PCM (24kHz, 16-bit, mono); another `SampleRate` is resampled |
+| mulaw | Raw G.711 mu-law for phone calls, 8kHz unless `SampleRate` says otherwise |
+| alaw | Raw G.711 A-law, 8kHz unless `SampleRate` says otherwise |
+
+OpenAI produces raw audio only as 24kHz PCM. The provider converts it for the
+other raw formats, in `Synthesize` and `SynthesizeStream` alike, and reports
+the sample rate of raw audio in the result. Aliases such as `ulaw` and names
+with the rate appended, such as `ulaw_8000` or `pcm_16000`, are accepted, so a
+configuration written for another OmniVoice provider works unchanged:
+
+```go
+// Mu-law at 8kHz, ready to play on a Twilio or Telnyx call.
+result, err := provider.Synthesize(ctx, "Hello from a phone call.", tts.SynthesisConfig{
+    VoiceID:      omnivoice.VoiceAlloy,
+    OutputFormat: "mulaw",
+    SampleRate:   8000,
+})
+// result.Format == "mulaw", result.SampleRate == 8000
+```

@@ -4,6 +4,9 @@ All releases of omni-openai.
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [v0.8.0](v0.8.0.md) | 2026-10-28 | Phone-call speech: mu-law, A-law, and resampled PCM |
+| [v0.7.1](v0.7.1.md) | 2026-10-08 | Dependency updates |
+| [v0.7.0](v0.7.0.md) | 2026-10-07 | Codex CLI session reader |
 | [v0.6.1](v0.6.1.md) | 2026-08-09 | Realtime backpressure and OOM guard fixes |
 | [v0.6.0](v0.6.0.md) | 2026-07-19 | OmniDevX Codex CLI telemetry collector |
 | [v0.5.0](v0.5.0.md) | 2026-07-05 | Reasoning effort support for o1/o3 models |

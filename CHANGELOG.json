@@ -11,6 +11,33 @@
   ],
   "releases": [
     {
+      "version": "v0.8.0",
+      "date": "2026-10-28",
+      "highlights": [
+        { "description": "**Phone-call speech**: the OmniVoice TTS provider returns 8 kHz mu-law or A-law audio, so OpenAI voices work on phone calls and are interchangeable with other OmniVoice providers", "commit": "fb2a8d9" }
+      ],
+      "added": [
+        { "description": "[omnivoice] `mulaw`/`ulaw` and `alaw` output formats, converted from OpenAI's 24 kHz PCM at 8 kHz unless `SampleRate` asks for another rate", "commit": "fb2a8d9" },
+        { "description": "[omnivoice] `pcm` output resampled when `SampleRate` is not 24000", "commit": "fb2a8d9" },
+        { "description": "[omnivoice] Format names with the rate appended, such as `ulaw_8000` and `pcm_16000`", "commit": "fb2a8d9" },
+        { "description": "[omnivoice] `SynthesizeStream` converts each chunk, holding partial samples so streamed audio matches whole-clip conversion", "commit": "fb2a8d9" },
+        { "description": "[omnivoice] `PCMSampleRate` constant", "commit": "fb2a8d9" }
+      ],
+      "fixed": [
+        { "description": "[omnivoice] `SynthesisResult.SampleRate` is set for raw formats; it was 0", "commit": "fb2a8d9" }
+      ],
+      "tests": [
+        { "description": "[omnivoice] Unit tests for format planning and stream conversion, and a live mu-law synthesis test", "commit": "03d108a" }
+      ],
+      "documentation": [
+        { "description": "[omnivoice] Output formats table covers mu-law, A-law, and resampled PCM", "commit": "bf23637" }
+      ],
+      "dependencies": [
+        { "description": "Bumped `modernc.org/sqlite` from v1.60.1 to v1.61.0", "commit": "4235b0a" },
+        { "description": "Updated indirect dependencies", "commit": "4235b0a" }
+      ]
+    },
+    {
       "version": "v0.7.1",
       "date": "2026-10-08",
       "dependencies": [

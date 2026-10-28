@@ -78,55 +78,53 @@ func (p *TTSProvider) GetVoice(ctx context.Context, voiceID string) (*tts.Voice,
 }
 
 // Synthesize converts text to speech.
+//
+// Raw output formats are produced from OpenAI's 24 kHz PCM: "pcm" or
+// "linear16" at another SampleRate is resampled, and "mulaw" and "alaw" are
+// encoded, at 8 kHz unless SampleRate says otherwise. The result reports the
+// sample rate of raw audio.
 func (p *TTSProvider) Synthesize(ctx context.Context, text string, config tts.SynthesisConfig) (*tts.SynthesisResult, error) {
-	req := oaiclient.TTSRequest{
-		Input: text,
-	}
-
-	if config.Model != "" {
-		req.Model = config.Model
-	}
-	if config.VoiceID != "" {
-		req.Voice = config.VoiceID
-	}
-	if config.OutputFormat != "" {
-		req.ResponseFormat = config.OutputFormat
-	}
-	if config.Speed > 0 {
-		req.Speed = config.Speed
-	}
-
-	resp, err := p.client.Synthesize(ctx, req)
+	plan := planOutput(config.OutputFormat, config.SampleRate)
+	resp, err := p.client.Synthesize(ctx, ttsRequest(text, config, plan))
 	if err != nil {
 		return nil, err
 	}
 
-	return &tts.SynthesisResult{
-		Audio:  resp.Audio,
-		Format: resp.Format,
-	}, nil
+	audio, err := plan.convertAudio(resp.Audio)
+	if err != nil {
+		return nil, err
+	}
+	result := &tts.SynthesisResult{
+		Audio:      audio,
+		Format:     resp.Format,
+		SampleRate: plan.sampleRate,
+	}
+	if plan.resultFormat != "" {
+		result.Format = plan.resultFormat
+	}
+	return result, nil
 }
 
-// SynthesizeStream converts text to speech with streaming output.
-func (p *TTSProvider) SynthesizeStream(ctx context.Context, text string, config tts.SynthesisConfig) (<-chan tts.StreamChunk, error) {
+// ttsRequest builds the API request for a synthesis.
+func ttsRequest(text string, config tts.SynthesisConfig, plan outputPlan) oaiclient.TTSRequest {
 	req := oaiclient.TTSRequest{
-		Input: text,
-	}
-
-	if config.Model != "" {
-		req.Model = config.Model
-	}
-	if config.VoiceID != "" {
-		req.Voice = config.VoiceID
-	}
-	if config.OutputFormat != "" {
-		req.ResponseFormat = config.OutputFormat
+		Input:          text,
+		Model:          config.Model,
+		Voice:          config.VoiceID,
+		ResponseFormat: plan.apiFormat,
 	}
 	if config.Speed > 0 {
 		req.Speed = config.Speed
 	}
+	return req
+}
 
-	reader, err := p.client.SynthesizeStream(ctx, req)
+// SynthesizeStream converts text to speech with streaming output, in the
+// same output formats as Synthesize.
+func (p *TTSProvider) SynthesizeStream(ctx context.Context, text string, config tts.SynthesisConfig) (<-chan tts.StreamChunk, error) {
+	plan := planOutput(config.OutputFormat, config.SampleRate)
+	conv := &streamConverter{plan: plan}
+	reader, err := p.client.SynthesizeStream(ctx, ttsRequest(text, config, plan))
 	if err != nil {
 		return nil, err
 	}
@@ -156,21 +154,29 @@ func (p *TTSProvider) SynthesizeStream(ctx context.Context, text string, config 
 				data := make([]byte, n)
 				copy(data, buf[:n])
 
-				chunk := tts.StreamChunk{
-					Audio: data,
-				}
-
-				select {
-				case chunkCh <- chunk:
-				case <-ctx.Done():
-					chunkCh <- tts.StreamChunk{Error: ctx.Err()}
+				audio, convErr := conv.convert(data)
+				if convErr != nil {
+					chunkCh <- tts.StreamChunk{Error: convErr}
 					return
+				}
+				if len(audio) > 0 {
+					select {
+					case chunkCh <- tts.StreamChunk{Audio: audio}:
+					case <-ctx.Done():
+						chunkCh <- tts.StreamChunk{Error: ctx.Err()}
+						return
+					}
 				}
 			}
 			if err != nil {
 				if err == io.EOF {
-					// Send final chunk
-					chunkCh <- tts.StreamChunk{IsFinal: true}
+					// Send what conversion held back, then the final chunk.
+					rest, convErr := conv.flush()
+					if convErr != nil {
+						chunkCh <- tts.StreamChunk{Error: convErr}
+						return
+					}
+					chunkCh <- tts.StreamChunk{Audio: rest, IsFinal: true}
 					return
 				}
 				chunkCh <- tts.StreamChunk{Error: err}

@@ -8,7 +8,7 @@ require (
 	github.com/plexusone/omnidevx-core v0.4.1
 	github.com/plexusone/omnillm-core v0.18.1
 	github.com/plexusone/omnivoice-core v0.18.1
-	modernc.org/sqlite v1.61.0
+	modernc.org/sqlite v1.61.1
 )
 
 require (

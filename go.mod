@@ -8,6 +8,7 @@ require (
 	github.com/plexusone/omnidevx-core v0.4.1
 	github.com/plexusone/omnillm-core v0.18.1
 	github.com/plexusone/omnivoice-core v0.18.1
+	golang.org/x/text v0.44.0
 	modernc.org/sqlite v1.62.0
 )
 
@@ -25,7 +26,6 @@ require (
 	github.com/tidwall/sjson v1.2.5 // indirect
 	golang.org/x/exp v0.0.0-20261014143641-f0251eb4aa3e // indirect
 	golang.org/x/sys v0.49.0 // indirect
-	golang.org/x/text v0.43.0 // indirect
 	modernc.org/libc v1.80.1 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.12.1 // indirect

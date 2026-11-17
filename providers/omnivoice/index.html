@@ -980,6 +980,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../releases/v0.8.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.8.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../releases/v0.8.0/" class="md-nav__link">
         
   
@@ -1549,7 +1577,7 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">Transcribe</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">audioData</span><span class="p">,</span><span class="w"> </span><span class="nx">stt</span><span class="p">.</span><span class="nx">TranscriptionConfig</span><span class="p">{</span>
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nx">Encoding</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mp3&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nx">Language</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;en&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// Optional: auto-detected if omitted</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nx">Language</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;en-US&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Optional: auto-detected if omitted</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">})</span>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -1559,6 +1587,13 @@
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Language:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">Language</span><span class="p">)</span>
 <a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Duration:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span>
 </code></pre></div>
+<p><code>Language</code> takes a BCP 47 tag such as <code>en-US</code> or <code>fr</code>, as in every OmniVoice
+provider. OpenAI expects ISO 639-1 codes, so the provider sends the tag's
+language (<code>en-US</code> is sent as <code>en</code>). Leave it empty to have OpenAI detect the
+language.</p>
+<p><code>Encoding</code> names the audio's format (<code>mp3</code>, <code>wav</code>, <code>flac</code>, <code>opus</code>, <code>m4a</code> or
+<code>webm</code>, defaulting to <code>mp3</code>). It becomes the uploaded file's name and
+content type, which OpenAI uses to recognize the format.</p>
 <h3 id="with-word-timestamps">With Word Timestamps<a class="headerlink" href="#with-word-timestamps" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">Transcribe</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">audioData</span><span class="p">,</span><span class="w"> </span><span class="nx">stt</span><span class="p">.</span><span class="nx">TranscriptionConfig</span><span class="p">{</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nx">Encoding</span><span class="p">:</span><span class="w">             </span><span class="s">&quot;mp3&quot;</span><span class="p">,</span>

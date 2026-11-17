@@ -39,7 +39,7 @@ if err != nil {
 
 result, err := provider.Transcribe(ctx, audioData, stt.TranscriptionConfig{
     Encoding: "mp3",
-    Language: "en",  // Optional: auto-detected if omitted
+    Language: "en-US", // Optional: auto-detected if omitted
 })
 if err != nil {
     log.Fatal(err)
@@ -49,6 +49,15 @@ fmt.Println("Text:", result.Text)
 fmt.Println("Language:", result.Language)
 fmt.Println("Duration:", result.Duration)
 ```
+
+`Language` takes a BCP 47 tag such as `en-US` or `fr`, as in every OmniVoice
+provider. OpenAI expects ISO 639-1 codes, so the provider sends the tag's
+language (`en-US` is sent as `en`). Leave it empty to have OpenAI detect the
+language.
+
+`Encoding` names the audio's format (`mp3`, `wav`, `flac`, `opus`, `m4a` or
+`webm`, defaulting to `mp3`). It becomes the uploaded file's name and
+content type, which OpenAI uses to recognize the format.
 
 ### With Word Timestamps
 

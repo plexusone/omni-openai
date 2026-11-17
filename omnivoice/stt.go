@@ -5,7 +5,10 @@ import (
 	"context"
 	"errors"
 	"path/filepath"
+	"strings"
 	"time"
+
+	"golang.org/x/text/language"
 
 	"github.com/plexusone/omnivoice-core/stt"
 
@@ -51,7 +54,7 @@ func (p *STTProvider) Transcribe(ctx context.Context, audio []byte, config stt.T
 	req := oaiclient.TranscriptionRequest{
 		Audio:    audio,
 		Filename: getFilename(config.Encoding),
-		Language: config.Language,
+		Language: languageCode(config.Language),
 	}
 
 	if config.Model != "" {
@@ -75,7 +78,7 @@ func (p *STTProvider) Transcribe(ctx context.Context, audio []byte, config stt.T
 func (p *STTProvider) TranscribeFile(ctx context.Context, filePath string, config stt.TranscriptionConfig) (*stt.TranscriptionResult, error) {
 	req := oaiclient.TranscriptionRequest{
 		Filename: filepath.Base(filePath),
-		Language: config.Language,
+		Language: languageCode(config.Language),
 	}
 
 	if config.Model != "" {
@@ -167,4 +170,30 @@ func getFilename(encoding string) string {
 	default:
 		return "audio.mp3"
 	}
+}
+
+// languageCode converts a BCP 47 tag, as OmniVoice configurations use
+// ("en-US"), to the ISO 639-1 code OpenAI transcription expects ("en"). An
+// empty tag stays empty, which asks OpenAI to detect the language. A tag that
+// can't be parsed is returned unchanged, so the API reports it.
+func languageCode(tag string) string {
+	tag = strings.TrimSpace(tag)
+	if tag == "" {
+		return ""
+	}
+	t, err := language.Parse(tag)
+	if err != nil {
+		return tag
+	}
+	// Map individual languages to the macrolanguage code ISO 639-1 has
+	// ("cmn" to "zh", "arb" to "ar"). Raw, unlike Base, never guesses a
+	// language: "und-US" stays undetermined.
+	if mt, err := language.Macro.Canonicalize(t); err == nil {
+		t = mt
+	}
+	base, _, _ := t.Raw()
+	if s := base.String(); s != "" && s != "und" {
+		return s
+	}
+	return tag
 }

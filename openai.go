@@ -8,6 +8,8 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
+	"strings"
 
 	"github.com/openai/openai-go"
 	"github.com/openai/openai-go/option"
@@ -120,8 +122,10 @@ func (c *Client) Transcribe(ctx context.Context, req TranscriptionRequest) (*Tra
 	}
 
 	// Build the request parameters
+	// Name the upload: OpenAI detects the audio format from the file name's
+	// extension, and rejects a stream with no name.
 	params := openai.AudioTranscriptionNewParams{
-		File:  bytes.NewReader(req.Audio),
+		File:  openai.File(bytes.NewReader(req.Audio), filepath.Base(req.Filename), audioContentType(req.Filename)),
 		Model: req.Model,
 	}
 
@@ -316,3 +320,21 @@ const (
 	ModelTTS1     = "tts-1"
 	ModelTTS1HD   = "tts-1-hd"
 )
+
+// audioContentType returns the media type for an audio file name's extension.
+func audioContentType(name string) string {
+	switch strings.ToLower(filepath.Ext(name)) {
+	case ".wav":
+		return "audio/wav"
+	case ".flac":
+		return "audio/flac"
+	case ".m4a", ".mp4":
+		return "audio/mp4"
+	case ".ogg", ".oga", ".opus":
+		return "audio/ogg"
+	case ".webm":
+		return "audio/webm"
+	default:
+		return "audio/mpeg"
+	}
+}

@@ -4,6 +4,7 @@ All releases of omni-openai.
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [v0.8.1](v0.8.1.md) | 2026-11-17 | STT uploads named for format detection; BCP 47 language tags |
 | [v0.8.0](v0.8.0.md) | 2026-10-28 | Phone-call speech: mu-law, A-law, and resampled PCM |
 | [v0.7.1](v0.7.1.md) | 2026-10-08 | Dependency updates |
 | [v0.7.0](v0.7.0.md) | 2026-10-07 | Codex CLI session reader |

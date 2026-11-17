@@ -185,7 +185,12 @@ func languageCode(tag string) string {
 	if err != nil {
 		return tag
 	}
-	// Raw, unlike Base, never guesses a language: "und-US" stays undetermined.
+	// Map individual languages to the macrolanguage code ISO 639-1 has
+	// ("cmn" to "zh", "arb" to "ar"). Raw, unlike Base, never guesses a
+	// language: "und-US" stays undetermined.
+	if mt, err := language.Macro.Canonicalize(t); err == nil {
+		t = mt
+	}
 	base, _, _ := t.Raw()
 	if s := base.String(); s != "" && s != "und" {
 		return s

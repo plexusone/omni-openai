@@ -7,7 +7,7 @@ require (
 	github.com/openai/openai-go v1.12.0
 	github.com/plexusone/omnidevx-core v0.4.1
 	github.com/plexusone/omnillm-core v0.18.1
-	github.com/plexusone/omnivoice-core v0.18.1
+	github.com/plexusone/omnivoice-core v0.19.0
 	modernc.org/sqlite v1.62.0
 )
 

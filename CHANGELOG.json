@@ -23,7 +23,9 @@
       ],
       "dependencies": [
         { "description": "`golang.org/x/text` v0.44.0, now a direct dependency for language tags", "commit": "6468f44" },
-        { "description": "`modernc.org/sqlite` from v1.61.0 to v1.62.0", "commit": "9affbed" }
+        { "description": "`modernc.org/sqlite` from v1.61.0 to v1.62.0", "commit": "9affbed" },
+        { "description": "`github.com/plexusone/omnivoice-core` from v0.18.1 to v0.20.0", "commit": "a73ae70" },
+        { "description": "Indirect dependencies updated", "commit": "a73ae70" }
       ],
       "documentation": [
         { "description": "OmniVoice provider guide: language tags and audio formats for STT", "commit": "13dba8b" },

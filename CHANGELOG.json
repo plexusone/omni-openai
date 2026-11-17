@@ -18,7 +18,8 @@
       ],
       "fixed": [
         { "description": "The transcription upload carries its file name and content type, so OpenAI recognizes WAV and other formats; it was sent unnamed and rejected as an unrecognized file format", "commit": "4dfc433" },
-        { "description": "OmniVoice STT sends ISO 639-1 language codes: `en-US` is sent as `en`, an empty tag still asks OpenAI to detect the language", "commit": "6468f44" }
+        { "description": "OmniVoice STT sends ISO 639-1 language codes: `en-US` is sent as `en`, an empty tag still asks OpenAI to detect the language", "commit": "6468f44" },
+        { "description": "An undetermined tag such as `und` passes through unchanged instead of being guessed as a language", "commit": "a0612b4" }
       ],
       "dependencies": [
         { "description": "`golang.org/x/text` v0.44.0, now a direct dependency for language tags", "commit": "6468f44" },
@@ -30,7 +31,7 @@
       ],
       "tests": [
         { "description": "A mock server checks the upload's file name and content type", "commit": "4dfc433" },
-        { "description": "Language tag conversion", "commit": "6468f44" }
+        { "description": "Language tag conversion, including undetermined tags", "commit": "a0612b4" }
       ]
     },
     {

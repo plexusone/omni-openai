@@ -7,7 +7,7 @@ require (
 	github.com/openai/openai-go v1.12.0
 	github.com/plexusone/omnidevx-core v0.4.1
 	github.com/plexusone/omnillm-core v0.18.1
-	github.com/plexusone/omnivoice-core v0.20.0
+	github.com/plexusone/omnivoice-core v0.20.1
 	golang.org/x/text v0.44.0
 	modernc.org/sqlite v1.62.0
 )
@@ -24,7 +24,7 @@ require (
 	github.com/tidwall/match v1.2.0 // indirect
 	github.com/tidwall/pretty v1.3.0 // indirect
 	github.com/tidwall/sjson v1.2.9 // indirect
-	golang.org/x/exp v0.0.0-20261113113407-e3970619a1a4 // indirect
+	golang.org/x/exp v0.0.0-20261121134650-e1094eeca1b5 // indirect
 	golang.org/x/sys v0.50.0 // indirect
 	modernc.org/libc v1.81.2 // indirect
 	modernc.org/mathutil v1.7.1 // indirect

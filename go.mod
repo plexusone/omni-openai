@@ -9,7 +9,7 @@ require (
 	github.com/plexusone/omnillm-core v0.18.1
 	github.com/plexusone/omnivoice-core v0.20.0
 	golang.org/x/text v0.44.0
-	modernc.org/sqlite v1.62.0
+	modernc.org/sqlite v1.63.0
 )
 
 require (
